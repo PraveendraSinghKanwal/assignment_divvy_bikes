@@ -1,0 +1,27 @@
+"""divvy_bikes URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/4.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path
+from bike import views as b_views
+from station import views as s_views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('total_reserved_bikes/', b_views.total_bikes_reserved),
+    path('active_stations/', s_views.total_station_active),
+    path('total_docks_avl/<str:id>', s_views.total_docks_avl),
+    path('available_bikes/<str:id>', s_views.available_bikes),
+]
